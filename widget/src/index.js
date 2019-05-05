@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const target = document.getElementById('erw-root');
-if (target) { ReactDOM.render(<App />, target); }
+// The argument passed to our component is a "props" object. Use ES6
+// destructuring assignment syntax to extract `props.settings` as a named
+// variable. Then, use `color` and `name` from it in our output.
+const App = ({ settings }) => (
+  <div className="App" style={{borderColor: settings.color}}>
+    <span className="App__Message">Hello,<br />{settings.name}!</span>
+  </div>
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+const targets = document.querySelectorAll('.erw-root');
+Array.prototype.forEach.call(targets, target => {
+  // Retrieve this instance's unique ID from the dataset.
+  const id = target.dataset.id;
+
+  // Pull the settings object unique to this instance from the window-global
+  // settings object.
+  const settings = window.erwSettings[id];
+
+  // Pass settings to our component as a named property ("prop").
+  ReactDOM.render(<App settings={settings} />, target)
+});
+
 serviceWorker.unregister();
