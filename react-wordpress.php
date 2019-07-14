@@ -1,7 +1,7 @@
 <?php
 /**
  * @link    https://github.com/<^>sammy/react-wordpress<^>
- * @package Embedding React In Wordpress 
+ * @package Embedding React In Wordpress
  * @author  <^>Sammy <sammy@example.com><^>
  *
  * @wordpress-plugin
