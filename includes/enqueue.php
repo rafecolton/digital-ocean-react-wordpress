@@ -21,7 +21,7 @@ add_action( 'init', function() {
 
   add_action( 'wp_enqueue_scripts', function() {
     // Parse the asset manifest JSON file
-    $asset_manifest = json_decode( file_get_contents( ERW_ASSET_MANIFEST ), true );
+    $asset_manifest = json_decode( file_get_contents( ERW_ASSET_MANIFEST ), true )['files'];
 
     // If any css is loaded in index.js, the `main.css` file will be present
     if ( isset( $asset_manifest[ 'main.css' ] ) ) {
